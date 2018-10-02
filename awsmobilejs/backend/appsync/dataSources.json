@@ -1,0 +1,271 @@
+{
+    "dataSources": [
+        {
+            "name": "CheckrAppliedTestsTable",
+            "description": "DataSource for Amazon DynamoDB table CheckrAppliedTestsTable (arn:aws:dynamodb:us-west-2:123456789012:table/CheckrAppliedTestsTable)",
+            "type": "AMAZON_DYNAMODB",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}",
+            "dynamodbConfig": {
+                "tableName": "CheckrAppliedTestsTable",
+                "awsRegion": "us-west-2",
+                "useCallerCredentials": false
+            }
+        },
+        {
+            "name": "CheckrGradesTable",
+            "description": "DataSource for Amazon DynamoDB table CheckrGradesTable (arn:aws:dynamodb:us-west-2:123456789012:table/CheckrGradesTable)",
+            "type": "AMAZON_DYNAMODB",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}",
+            "dynamodbConfig": {
+                "tableName": "CheckrGradesTable",
+                "awsRegion": "us-west-2",
+                "useCallerCredentials": false
+            }
+        },
+        {
+            "name": "CheckrGroupsTable",
+            "description": "DataSource for Amazon DynamoDB table CheckrGroupsTable (arn:aws:dynamodb:us-west-2:123456789012:table/CheckrGroupsTable)",
+            "type": "AMAZON_DYNAMODB",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}",
+            "dynamodbConfig": {
+                "tableName": "CheckrGroupsTable",
+                "awsRegion": "us-west-2",
+                "useCallerCredentials": false
+            }
+        },
+        {
+            "name": "CheckrStudentsTable",
+            "description": "DataSource for Amazon DynamoDB table CheckrStudentsTable (arn:aws:dynamodb:us-west-2:123456789012:table/CheckrStudentsTable)",
+            "type": "AMAZON_DYNAMODB",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}",
+            "dynamodbConfig": {
+                "tableName": "CheckrStudentsTable",
+                "awsRegion": "us-west-2",
+                "useCallerCredentials": false
+            }
+        },
+        {
+            "name": "CheckrTestsTable",
+            "description": "DataSource for Amazon DynamoDB table CheckrTestsTable (arn:aws:dynamodb:us-west-2:123456789012:table/CheckrTestsTable)",
+            "type": "AMAZON_DYNAMODB",
+            "serviceRoleArn": "{managed-by-awsmobile-cli}",
+            "dynamodbConfig": {
+                "tableName": "CheckrTestsTable",
+                "awsRegion": "us-west-2",
+                "useCallerCredentials": false
+            }
+        }
+    ],
+    "tables": [
+        {
+            "AttributeDefinitions": [
+                {
+                    "AttributeName": "groupId",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                }
+            ],
+            "TableName": "CheckrAppliedTestsTable",
+            "KeySchema": [
+                {
+                    "AttributeName": "groupId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "id",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            },
+            "Region": "us-west-2"
+        },
+        {
+            "AttributeDefinitions": [
+                {
+                    "AttributeName": "appliedTestId",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "studentId",
+                    "AttributeType": "S"
+                }
+            ],
+            "TableName": "CheckrGradesTable",
+            "KeySchema": [
+                {
+                    "AttributeName": "studentId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "id",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            },
+            "GlobalSecondaryIndexes": [
+                {
+                    "IndexName": "studentId-appliedTestId-index",
+                    "KeySchema": [
+                        {
+                            "AttributeName": "appliedTestId",
+                            "KeyType": "HASH"
+                        },
+                        {
+                            "AttributeName": "id",
+                            "KeyType": "RANGE"
+                        }
+                    ],
+                    "Projection": {
+                        "ProjectionType": "ALL"
+                    },
+                    "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1
+                    }
+                }
+            ],
+            "Region": "us-west-2"
+        },
+        {
+            "AttributeDefinitions": [
+                {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "userId",
+                    "AttributeType": "S"
+                }
+            ],
+            "TableName": "CheckrGroupsTable",
+            "KeySchema": [
+                {
+                    "AttributeName": "userId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "id",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            },
+            "GlobalSecondaryIndexes": [
+                {
+                    "IndexName": "userId-name-index",
+                    "KeySchema": [
+                        {
+                            "AttributeName": "id",
+                            "KeyType": "HASH"
+                        }
+                    ],
+                    "Projection": {
+                        "ProjectionType": "ALL"
+                    },
+                    "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1
+                    }
+                }
+            ],
+            "Region": "us-west-2"
+        },
+        {
+            "AttributeDefinitions": [
+                {
+                    "AttributeName": "groupId",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "username",
+                    "AttributeType": "S"
+                }
+            ],
+            "TableName": "CheckrStudentsTable",
+            "KeySchema": [
+                {
+                    "AttributeName": "groupId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "id",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            },
+            "GlobalSecondaryIndexes": [
+                {
+                    "IndexName": "groupId-name-index",
+                    "KeySchema": [
+                        {
+                            "AttributeName": "username",
+                            "KeyType": "HASH"
+                        },
+                        {
+                            "AttributeName": "groupId",
+                            "KeyType": "RANGE"
+                        }
+                    ],
+                    "Projection": {
+                        "ProjectionType": "ALL"
+                    },
+                    "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1
+                    }
+                }
+            ],
+            "Region": "us-west-2"
+        },
+        {
+            "AttributeDefinitions": [
+                {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                },
+                {
+                    "AttributeName": "userId",
+                    "AttributeType": "S"
+                }
+            ],
+            "TableName": "CheckrTestsTable",
+            "KeySchema": [
+                {
+                    "AttributeName": "userId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "id",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            },
+            "Region": "us-west-2"
+        }
+    ]
+}

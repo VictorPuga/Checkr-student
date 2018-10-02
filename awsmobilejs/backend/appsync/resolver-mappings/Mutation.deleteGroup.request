@@ -1,0 +1,8 @@
+{
+  "version": "2017-02-28",
+  "operation": "DeleteItem",
+  "key": {
+    "userId": #if($ctx.args.input.userId) $util.dynamodb.toDynamoDBJson($ctx.args.input.userId) #else $util.dynamodb.toDynamoDBJson($ctx.identity.sub) #end,
+    "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id),
+  },
+}

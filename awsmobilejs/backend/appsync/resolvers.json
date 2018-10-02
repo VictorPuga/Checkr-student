@@ -1,0 +1,247 @@
+[
+    {
+        "typeName": "AppliedTest",
+        "fieldName": "grades",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:AppliedTest.grades.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:AppliedTest.grades.response"
+    },
+    {
+        "typeName": "Group",
+        "fieldName": "students",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Group.students.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Group.students.response"
+    },
+    {
+        "typeName": "Group",
+        "fieldName": "tests",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Group.tests.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Group.tests.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "createAppliedTest",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createAppliedTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createAppliedTest.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "createGrade",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createGrade.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createGrade.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "createGroup",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createGroup.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createGroup.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "createStudent",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createStudent.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createStudent.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "createTest",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.createTest.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "deleteAppliedTest",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteAppliedTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteAppliedTest.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "deleteGrade",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteGrade.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteGrade.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "deleteGroup",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteGroup.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteGroup.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "deleteStudent",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteStudent.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteStudent.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "deleteTest",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.deleteTest.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "linkStudentProfileToUser",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.linkStudentProfileToUser.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.linkStudentProfileToUser.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "updateAppliedTest",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateAppliedTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateAppliedTest.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "updateGrade",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateGrade.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateGrade.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "updateGroup",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateGroup.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateGroup.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "updateStudent",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateStudent.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateStudent.response"
+    },
+    {
+        "typeName": "Mutation",
+        "fieldName": "updateTest",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Mutation.updateTest.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getAppliedTest",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAppliedTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getAppliedTest.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getGrade",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getGrade.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getGrade.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getGroup",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getGroup.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getGroup.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getStudent",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getStudent.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getStudent.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "getTest",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.getTest.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.getTest.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "listAppliedTests",
+        "dataSourceName": "CheckrAppliedTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listAppliedTests.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listAppliedTests.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "listGrades",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listGrades.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listGrades.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "listGroups",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listGroups.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listGroups.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "listStudents",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listStudents.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listStudents.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "listTests",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.listTests.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.listTests.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "queryGradesByStudentIdAppliedTestIdIndex",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGradesByStudentIdAppliedTestIdIndex.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGradesByStudentIdAppliedTestIdIndex.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "queryGroupsByUserIdNameIndex",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGroupsByUserIdNameIndex.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGroupsByUserIdNameIndex.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "queryGroupsFromUserId",
+        "dataSourceName": "CheckrGroupsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGroupsFromUserId.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryGroupsFromUserId.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "queryStudentsByGroupIdNameIndex",
+        "dataSourceName": "CheckrStudentsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryStudentsByGroupIdNameIndex.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryStudentsByGroupIdNameIndex.response"
+    },
+    {
+        "typeName": "Query",
+        "fieldName": "queryTestsFromUserId",
+        "dataSourceName": "CheckrTestsTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryTestsFromUserId.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Query.queryTestsFromUserId.response"
+    },
+    {
+        "typeName": "Student",
+        "fieldName": "grades",
+        "dataSourceName": "CheckrGradesTable",
+        "requestMappingTemplate": "{managed-by-awsmobile-cli}:Student.grades.request",
+        "responseMappingTemplate": "{managed-by-awsmobile-cli}:Student.grades.response"
+    }
+]

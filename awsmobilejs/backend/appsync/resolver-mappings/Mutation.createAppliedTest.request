@@ -1,0 +1,16 @@
+{
+  "version": "2017-02-28",
+  "operation": "PutItem",
+  "key": {
+    "groupId": $util.dynamodb.toDynamoDBJson($ctx.args.input.groupId),
+    "id": #if($ctx.args.input.id) $util.dynamodb.toDynamoDBJson($ctx.args.input.id) #else $util.dynamodb.toDynamoDBJson($util.autoId()) #end,
+  },
+  "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args.input),
+  "condition": {
+    "expression": "attribute_not_exists(#groupId) AND attribute_not_exists(#id)",
+    "expressionNames": {
+      "#groupId": "groupId",
+      "#id": "id",
+    },
+  },
+}

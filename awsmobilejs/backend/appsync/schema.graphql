@@ -1,0 +1,365 @@
+enum Answers
+{
+A
+B
+C
+D
+}
+
+type AppliedTest
+{
+id: ID!
+testId: ID!
+groupId: ID!
+name: String
+grades(limit: Int,nextToken: String ): GradeConnection
+}
+
+type AppliedTestConnection
+{
+items: [AppliedTest]
+nextToken: String
+}
+
+input CreateAppliedTestInput
+{
+id: ID
+testId: ID!
+groupId: ID!
+name: String}
+
+input CreateGradeInput
+{
+appliedTestId: ID!
+studentId: ID!
+id: ID
+grade: Int}
+
+input CreateGroupInput
+{
+id: ID
+userId: ID
+name: String
+icon: String
+color: String}
+
+input CreateStudentInput
+{
+groupId: ID!
+id: ID
+name: String
+username: String!
+password: String
+lastName: String}
+
+input CreateTestInput
+{
+id: ID
+userId: String!
+name: String
+versions: Int
+questions: Int}
+
+input DeleteAppliedTestInput
+{
+id: ID!
+groupId: ID!}
+
+input DeleteGradeInput
+{
+studentId: ID!
+id: ID!}
+
+input DeleteGroupInput
+{
+id: ID!
+userId: ID!}
+
+input DeleteStudentInput
+{
+groupId: ID!
+id: ID!}
+
+input DeleteTestInput
+{
+id: ID!
+userId: String!}
+
+type Grade
+{
+appliedTestId: ID!
+studentId: ID!
+id: ID!
+grade: Int
+answers: [Answers]
+appliedTestName: String
+}
+
+type GradeConnection
+{
+items: [Grade]
+nextToken: String
+}
+
+type Group
+{
+id: ID!
+userId: ID
+name: String
+icon: String
+color: String
+students(limit: Int,nextToken: String ): StudentConnection
+tests(limit: Int,nextToken: String ): AppliedTestConnection
+}
+
+type GroupConnection
+{
+items: [Group]
+nextToken: String
+}
+
+type Mutation
+{
+createGroup(input: CreateGroupInput! ): Group
+updateGroup(input: UpdateGroupInput! ): Group
+deleteGroup(input: DeleteGroupInput! ): Group
+createTest(input: CreateTestInput! ): Test
+updateTest(input: UpdateTestInput! ): Test
+deleteTest(input: DeleteTestInput! ): Test
+createStudent(input: CreateStudentInput! ): Student
+updateStudent(input: UpdateStudentInput! ): Student
+linkStudentProfileToUser(input: UpdateStudentInput! ): Student
+deleteStudent(input: DeleteStudentInput! ): Student
+createGrade(input: CreateGradeInput! ): Grade
+updateGrade(input: UpdateGradeInput! ): Grade
+deleteGrade(input: DeleteGradeInput! ): Grade
+createAppliedTest(input: CreateAppliedTestInput! ): AppliedTest
+updateAppliedTest(input: UpdateAppliedTestInput! ): AppliedTest
+deleteAppliedTest(input: DeleteAppliedTestInput! ): AppliedTest
+}
+
+type Query
+{
+getGroup(userId: ID!,id: ID! ): Group
+queryGroupsFromUserId(userId: ID!,first: Int,after: String ): GroupConnection
+listGroups(filter: TableGroupFilterInput,limit: Int,nextToken: String ): GroupConnection
+queryGroupsByUserIdNameIndex(id: ID!,first: Int,after: String ): GroupConnection
+getTest(userId: String!,id: ID! ): Test
+queryTestsFromUserId(userId: ID!,first: Int,after: String ): TestConnection
+listTests(filter: TableTestFilterInput,limit: Int,nextToken: String ): TestConnection
+getStudent(groupId: ID!,id: ID! ): Student
+listStudents(filter: TableStudentFilterInput,limit: Int,nextToken: String ): StudentConnection
+queryStudentsByGroupIdNameIndex(username: String,first: Int,after: String ): StudentConnection
+getGrade(studentId: ID!,id: ID! ): Grade
+listGrades(filter: TableGradeFilterInput,limit: Int,nextToken: String ): GradeConnection
+queryGradesByStudentIdAppliedTestIdIndex(appliedTestId: ID!,first: Int,after: String ): GradeConnection
+getAppliedTest(groupId: ID!,id: ID! ): AppliedTest
+listAppliedTests(filter: TableAppliedTestFilterInput,limit: Int,nextToken: String ): AppliedTestConnection
+}
+
+type Student
+{
+groupId: ID!
+id: ID!
+name: String
+username: String!
+password: String
+lastName: String
+grades(limit: Int,nextToken: String ): GradeConnection
+}
+
+type StudentConnection
+{
+items: [Student]
+nextToken: String
+}
+
+type Subscription
+{
+onCreateGroup(id: ID,userId: ID,name: String,icon: String,color: String ): Group
+@aws_subscribe(mutations: ["createGroup"])
+onUpdateGroup(id: ID,userId: ID,name: String,icon: String,color: String ): Group
+@aws_subscribe(mutations: ["updateGroup"])
+onDeleteGroup(id: ID,userId: ID,name: String,icon: String,color: String ): Group
+@aws_subscribe(mutations: ["deleteGroup"])
+onCreateTest(id: ID,userId: String,name: String,versions: Int,questions: Int ): Test
+@aws_subscribe(mutations: ["createTest"])
+onUpdateTest(id: ID,userId: String,name: String,versions: Int,questions: Int ): Test
+@aws_subscribe(mutations: ["updateTest"])
+onDeleteTest(id: ID,userId: String,name: String,versions: Int,questions: Int ): Test
+@aws_subscribe(mutations: ["deleteTest"])
+onCreateStudent(groupId: ID,id: ID,name: String,username: String,password: String ): Student
+@aws_subscribe(mutations: ["createStudent"])
+onUpdateStudent(groupId: ID,id: ID,name: String,username: String,password: String ): Student
+@aws_subscribe(mutations: ["updateStudent"])
+onDeleteStudent(groupId: ID,id: ID,name: String,username: String,password: String ): Student
+@aws_subscribe(mutations: ["deleteStudent"])
+onCreateGrade(appliedTestId: ID,studentId: ID,id: ID,grade: Int ): Grade
+@aws_subscribe(mutations: ["createGrade"])
+onUpdateGrade(appliedTestId: ID,studentId: ID,id: ID,grade: Int ): Grade
+@aws_subscribe(mutations: ["updateGrade"])
+onDeleteGrade(appliedTestId: ID,studentId: ID,id: ID,grade: Int ): Grade
+@aws_subscribe(mutations: ["deleteGrade"])
+onCreateAppliedTest(id: ID,testId: ID,groupId: ID,name: String ): AppliedTest
+@aws_subscribe(mutations: ["createAppliedTest"])
+onUpdateAppliedTest(id: ID,testId: ID,groupId: ID,name: String ): AppliedTest
+@aws_subscribe(mutations: ["updateAppliedTest"])
+onDeleteAppliedTest(id: ID,testId: ID,groupId: ID,name: String ): AppliedTest
+@aws_subscribe(mutations: ["deleteAppliedTest"])
+}
+
+input TableAppliedTestFilterInput
+{
+id: TableIDFilterInput
+testId: TableIDFilterInput
+groupId: TableIDFilterInput
+name: TableStringFilterInput}
+
+input TableBooleanFilterInput
+{
+ne: Boolean
+eq: Boolean}
+
+input TableFloatFilterInput
+{
+ne: Float
+eq: Float
+le: Float
+lt: Float
+ge: Float
+gt: Float
+contains: Float
+notContains: Float
+between: [Float]}
+
+input TableGradeFilterInput
+{
+appliedTestId: TableIDFilterInput
+studentId: TableIDFilterInput
+id: TableIDFilterInput
+grade: TableIntFilterInput}
+
+input TableGroupFilterInput
+{
+id: TableIDFilterInput
+userId: TableIDFilterInput
+name: TableStringFilterInput
+icon: TableStringFilterInput
+color: TableStringFilterInput}
+
+input TableIDFilterInput
+{
+ne: ID
+eq: ID
+le: ID
+lt: ID
+ge: ID
+gt: ID
+contains: ID
+notContains: ID
+between: [ID]
+beginsWith: ID}
+
+input TableIntFilterInput
+{
+ne: Int
+eq: Int
+le: Int
+lt: Int
+ge: Int
+gt: Int
+contains: Int
+notContains: Int
+between: [Int]}
+
+input TableStringFilterInput
+{
+ne: String
+eq: String
+le: String
+lt: String
+ge: String
+gt: String
+contains: String
+notContains: String
+between: [String]
+beginsWith: String}
+
+input TableStudentFilterInput
+{
+groupId: TableIDFilterInput
+id: TableIDFilterInput
+name: TableStringFilterInput
+username: TableStringFilterInput
+password: TableStringFilterInput
+lastName: TableStringFilterInput}
+
+input TableTestFilterInput
+{
+id: TableIDFilterInput
+userId: TableStringFilterInput
+name: TableStringFilterInput
+versions: TableIntFilterInput
+questions: TableIntFilterInput}
+
+type Test
+{
+id: ID!
+userId: String!
+name: String
+versions: Int
+keys: [[Answers]]
+questions: Int
+}
+
+type TestConnection
+{
+items: [Test]
+nextToken: String
+}
+
+input UpdateAppliedTestInput
+{
+id: ID!
+testId: ID
+groupId: ID!
+name: String}
+
+input UpdateGradeInput
+{
+appliedTestId: ID
+studentId: ID!
+id: ID!
+grade: Int}
+
+input UpdateGroupInput
+{
+id: ID!
+userId: ID!
+name: String
+icon: String
+color: String}
+
+input UpdateStudentInput
+{
+groupId: ID!
+id: ID!
+name: String
+username: String
+password: String
+lastName: String}
+
+input UpdateTestInput
+{
+id: ID!
+userId: String!
+name: String
+versions: Int
+questions: Int}
+
+schema 
+{
+query: Query
+mutation: Mutation
+subscription: Subscription
+}
