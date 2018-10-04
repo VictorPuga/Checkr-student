@@ -14,7 +14,7 @@ export default class GroupList extends React.Component {
     })
 
     async componentDidMount() {
-        this.fetchGroups()
+        await this.fetchGroups()
         this.props.navigation.setParams({
             refresh: () => this.fetchGroups(),
         })
@@ -44,19 +44,23 @@ export default class GroupList extends React.Component {
 
     renderSeparator = () => this.state.groups.length > 1 ? <View style={{ height: 40 }} /> : null;
 
-    goToGroup = (studentId, groupName, groupId) => this.props.navigation.navigate('StudentDetail', { studentId, groupName, groupId });
+    goToGroup = (studentId, groupName, groupId) => this.props.navigation.navigate('StudentDetail', { studentId, groupName, groupId })
 
-    renderEmptyComponent = () => (
+    renderEmptyComponent = () => {
+        let text = this.state.loading ? 'Retrieving groups...' : 'It looks like you haven\'t linked any groups....'
+        let button = this.state.loading ? null 
+        : <Button
+        title="Add a new one"
+        color={colors.main}
+        onPress={() => this.props.navigation.navigate('NewGroup', { refresh: this.fetchGroups })} />
+        return (
         <SafeAreaView style={globalStyles.container}>
             <View style={globalStyles.container}>
-                <Text style={globalStyles.empty}  >It looks like you haven't linked any groups...</Text>
-                <Button
-                    title="Add a new one"
-                    color={colors.main}
-                    onPress={() => this.props.navigation.navigate('NewGroup', { refresh: this.fetchGroups })} />
+                <Text style={globalStyles.empty}  >{text}</Text>
+                {button}
             </View>
         </SafeAreaView>
-    );
+    )}
 
     render() {
         return (
@@ -65,8 +69,8 @@ export default class GroupList extends React.Component {
                     style={{ width: '100%' }}
                     contentContainerStyle={{ alignItems: 'center' }}
                     ListEmptyComponent={this.renderEmptyComponent}
-                    ListHeaderComponent={this.renderSeparator}
-                    ListFooterComponent={this.renderSeparator}
+                    ListHeaderComponent={<View style={{ height: 40 }} />}
+                    ListFooterComponent={<View style={{ height: 40 }} />}
                     ItemSeparatorComponent={this.renderSeparator}
                     refreshing={this.state.loading}
                     onRefresh={this.fetchGroups}
@@ -79,7 +83,7 @@ export default class GroupList extends React.Component {
                                 title={item.name}
                                 color={item.color}
                                 icon={item.icon}
-                                onPress={() => this.goToGroup(item.studentId, item.name, item.groupId)}
+                                onPress={() => this.goToGroup(item.studentId, item.name, item.id)}
                             />
                     } />
             </View>

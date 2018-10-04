@@ -29,16 +29,21 @@ export default class extends React.Component {
         try {
             if (password && passwordConfirmation && name && family_name && email && gender) {
                 if (password === passwordConfirmation) {
-                    user = await Auth.signUp({
-                        username,
-                        password,
-                        attributes: {
-                            name,
-                            email,
-                            family_name,
-                            gender
-                        }
-                    })
+                    try {
+                        user = await Auth.signUp({
+                            username,
+                            password,
+                            attributes: {
+                                name,
+                                email,
+                                family_name,
+                                gender
+                            }
+                        })
+                    }
+                    catch (e) {
+                        console.log('[SignUp.js]:', e)
+                    }
                 } else {
                     Alert.alert("Both passwords don't match")
                 }
@@ -111,12 +116,8 @@ export default class extends React.Component {
                             { label: 'Other', value: 'other' }
                         ]}
                         onValueChange={(gender) => this.setState({ gender })}
-                        onUpArrow={() => {
-                            this.inputRefs.email.focus();
-                        }}
-                        onDownArrow={() => {
-                            this.inputRefs.name.focus();
-                        }}
+                        onUpArrow={() => { this.inputRefs.email.focus()}}
+                        onDownArrow={() => { this.inputRefs.name.focus()}}
                         // style={{ ...pickerStyles }}
                         style={pickerStyles}
                         value={this.state.gender}

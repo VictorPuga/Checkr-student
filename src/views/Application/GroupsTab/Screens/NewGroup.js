@@ -14,11 +14,10 @@ export default class NewGroup extends React.Component {
     };
     static navigationOptions = ({ navigation }) => ({ title: "New group", headerLeft: <NavButton title="Cancel" onPress={() => navigation.goBack()} />, });
 
-    addGroup = async (linkStudentProfileToUser) => {
+    addGroup = async () => {
         const { studentId, groupId } = this.state;
         try {
             await this.setState({loading: true})
-            // await linkStudentProfileToUser({ variables: { studentId, groupId } });
             await API.graphql(graphqlOperation(LINK_STUDENT_PROFILE_TO_USER, { studentId, groupId }))
             this.props.navigation.goBack();
         } catch (e) {
@@ -46,7 +45,7 @@ export default class NewGroup extends React.Component {
                     extraScrollHeight={100}>
                     <Text style={[globalStyles.subtitleBlack, { marginTop: 20 }]}>Your Group's ID</Text>
                     <TextInput
-                        ref={el => { this.inputRefs.group = el }}
+                        ref={el => this.inputRefs.group = el }
                         enablesReturnKeyAutomatically
                         returnKeyType="next"
                         onSubmitEditing={() => this.inputRefs.student.focus()}
@@ -72,30 +71,13 @@ export default class NewGroup extends React.Component {
                     />
                 </KeyboardAwareScrollView>
                 <BottomContainer>
-                    {/* <Mutation
-                        mutation={LINK_STUDENT_PROFILE_TO_USER}
-                        optimisticResponse={{
-                            linkStudentProfileToUser: {
-                                __typename: "student",
-                                id: this.state.studentId,
-                                groupId: this.state.groupId
-                            }
-                        }}
-                        fetchPolicy='network-only'
-                    >
-                        {(linkStudentProfileToUser, { loading, error, data, called }) =>
-                            ( */}
-                                <View>
-                                    {/* {error ? this.renderErrorAlert() : null} */}
-                                    
-                                    <RoundButton
-                                        style={{ backgroundColor: colors.main }}
-                                        title="Save Group"
-                                        onPress={this.addGroup}
-                                    />
-                                </View>
-                            {/* )}
-                    </Mutation> */}
+                    <View>
+                        <RoundButton
+                            style={{ backgroundColor: colors.main }}
+                            title="Save Group"
+                            onPress={this.addGroup}
+                        />
+                    </View>
                 </BottomContainer>
             </SafeAreaView>
         );

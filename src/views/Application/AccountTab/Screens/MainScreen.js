@@ -1,15 +1,13 @@
 import React from 'react';
-import { View, Button, StyleSheet, SectionList, Text, Alert } from 'react-native';
-import { SettingsCell, SectionHeader, TitleCell, DetailCell, LoadingHUD } from 'src/global/UI';
+import { View, StyleSheet, SectionList, Alert } from 'react-native';
+import { SettingsCell, SectionHeader, TitleCell, DetailCell } from 'src/global/UI';
 import { Auth } from 'aws-amplify';
 import { globalStyles, colors } from 'src/global/styles';
 import { stringToPascalCase } from 'src/global/utilities';
 export default class Main extends React.Component {
     state = {
         sections: [
-            { data: ['Payment'] },
             { data: ['Privacy'] },
-            { data: ['Contact the developers'] },
             { data: ['Log out'] },
         ],
         name: 'Your',

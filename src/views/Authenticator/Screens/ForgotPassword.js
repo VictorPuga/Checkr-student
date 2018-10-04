@@ -49,7 +49,6 @@ export default class extends React.Component {
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={() => this.inputRefs.newPassword.focus()}
-                        value={this.state.groupId}
                         onChangeText={username => this.setState({ username })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -64,7 +63,6 @@ export default class extends React.Component {
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={() => this.inputRefs.newPasswordConfirmation.focus()}
-                        value={this.state.groupId}
                         onChangeText={newPassword => this.setState({ newPassword })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -79,7 +77,6 @@ export default class extends React.Component {
                         returnKeyType="done"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={this.changePassword}
-                        value={this.state.groupId}
                         onChangeText={newPasswordConfirmation => this.setState({ newPasswordConfirmation })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}

@@ -4,6 +4,7 @@ import { TextInput, View, SafeAreaView, Text, Alert, Button } from 'react-native
 import { Auth } from 'aws-amplify';
 import { globalStyles, colors } from 'src/global/styles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 export default class extends React.Component {
     static navigationOptions = ({ navigation }) => ({ title: "Sign In" });
     state = { username: "", password: "", loading: false };
@@ -58,11 +59,12 @@ export default class extends React.Component {
                     </Text>
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.username = el; }}
+                        ref={el => this.inputRefs.username = el}
                         enablesReturnKeyAutomatically
                         returnKeyType="next"
                         onSubmitEditing={() => this.inputRefs.password.focus()}
-                        value={this.state.groupId}
+                        // onSubmitEditing={() => console.log('hey')}
+                        // value={this.state.groupId}
                         onChangeText={username => this.setState({ username })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -71,12 +73,12 @@ export default class extends React.Component {
                     />
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.password = el; }}
+                        ref={el => this.inputRefs.password = el}
                         secureTextEntry
                         enablesReturnKeyAutomatically
                         onSubmitEditing={this.signIn}
                         returnKeyType="done"
-                        value={this.state.groupId}
+                        // value={this.state.groupId}
                         onChangeText={password => this.setState({ password })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}

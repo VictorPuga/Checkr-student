@@ -30,3 +30,6 @@ export const stringToCamelCase = (string) => string.toLowerCase().trim().split(/
 
 //Converts Normal String to PascalCase
 export const stringToPascalCase = (string) => string[0].toUpperCase() + stringToCamelCase(string).substr(1);
+
+//Returns a string without the timestamp
+export const removeTimestamp = (string) => string.slice(14).split("-").join(" ");
