@@ -1,7 +1,7 @@
 import React from 'react';
 import { RoundButton, LoadingHUD, BottomContainer } from 'src/global/UI';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { TextInput, View, SafeAreaView, Text, Alert, Button } from 'react-native';
+import { TextInput, SafeAreaView, Text, Alert } from 'react-native';
 import { Auth } from 'aws-amplify';
 import { globalStyles, colors } from 'src/global/styles';
 

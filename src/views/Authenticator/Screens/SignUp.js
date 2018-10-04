@@ -1,6 +1,6 @@
 import React from 'react';
 import { RoundButton, LoadingHUD, BottomContainer } from 'src/global/UI';
-import { TextInput, View, SafeAreaView, Text, Alert, Button, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { TextInput, SafeAreaView, Text, Alert, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Auth } from 'aws-amplify';
 import { globalStyles, colors } from 'src/global/styles';
@@ -23,6 +23,7 @@ export default class extends React.Component {
     inputRefs = {};
     signUp = async () => {
         const { username, password, passwordConfirmation, name, family_name, email, gender } = this.state;
+        console.log('signing up')
         this.setState({ loading: true });
         let user = null;
         try {
@@ -71,11 +72,11 @@ export default class extends React.Component {
                     <Text>Username</Text>
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.username = el; }}
+                        ref={el => this.inputRefs.username = el}
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={() => this.inputRefs.email.focus()}
-                        value={this.state.groupId}
+                        // value={this.state.groupId}
                         onChangeText={username => this.setState({ username })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -86,11 +87,11 @@ export default class extends React.Component {
                     <TextInput
                         keyboardType='email-address'
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.email = el; }}
+                        ref={el => this.inputRefs.email = el}
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
-                        onSubmitEditing={() => this.inputRefs.genderPicker.focus()}
-                        value={this.state.groupId}
+                        onSubmitEditing={() => this.inputRefs.genderPicker.togglePicker()}  // not .focus()
+                        // value={this.state.groupId}
                         onChangeText={email => this.setState({ email })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -116,18 +117,19 @@ export default class extends React.Component {
                         onDownArrow={() => {
                             this.inputRefs.name.focus();
                         }}
-                        style={{ ...pickerStyles }}
+                        // style={{ ...pickerStyles }}
+                        style={pickerStyles}
                         value={this.state.gender}
-                        ref={el => { this.inputRefs.genderPicker = el; }}
+                        ref={el => this.inputRefs.genderPicker = el}
                     />
                     <Text>Name</Text>
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.name = el; }}
+                        ref={el => this.inputRefs.name = el}
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={() => this.inputRefs.family_name.focus()}
-                        value={this.state.groupId}
+                        // value={this.state.groupId}
                         onChangeText={name => this.setState({ name })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -137,11 +139,11 @@ export default class extends React.Component {
                     <Text>Last Name</Text>
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.family_name = el; }}
+                        ref={el => this.inputRefs.family_name = el}
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
-                        onSubmitEditing={() => this.inputRefs.password.togglePicker()}
-                        value={this.state.groupId}
+                        onSubmitEditing={() => this.inputRefs.password.focus()}
+                        // value={this.state.groupId}
                         onChangeText={family_name => this.setState({ family_name })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -151,12 +153,12 @@ export default class extends React.Component {
                     <Text>Password</Text>
                     <TextInput
                         autoCapitalize='none'
-                        ref={el => { this.inputRefs.password = el; }}
+                        ref={el => this.inputRefs.password = el}
                         secureTextEntry
                         returnKeyType="next"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={() => this.inputRefs.passwordConfirmation.focus()}
-                        value={this.state.groupId}
+                        // value={this.state.groupId}
                         onChangeText={password => this.setState({ password })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}
@@ -171,7 +173,7 @@ export default class extends React.Component {
                         returnKeyType="done"
                         enablesReturnKeyAutomatically
                         onSubmitEditing={this.signUp}
-                        value={this.state.groupId}
+                        // value={this.state.groupId}
                         onChangeText={passwordConfirmation => this.setState({ passwordConfirmation })}
                         selectionColor={colors.main}
                         style={[globalStyles.input, { marginBottom: 20 }]}

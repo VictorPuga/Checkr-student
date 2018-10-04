@@ -7,13 +7,13 @@ export default class extends React.Component {
     static navigationOptions = { header: null }
     async componentDidMount() {
         let currentUser = null;
-        try {
-            currentUser = await Auth.currentUserInfo();
-        } catch (e) {
-            console.log('[Splashscreen]', e)
-        } finally {
-            this.props.navigation.navigate(currentUser ? 'Application' : 'Authenticator');
-        };
+                try {
+                    currentUser = await Auth.currentUserInfo();
+                } catch (e) {
+                    console.log('[Splashscreen.js]', e)
+                } finally {
+                    await this.props.navigation.navigate(currentUser ? 'Application' : 'Authenticator');
+                }
     };
     render() {
         return (

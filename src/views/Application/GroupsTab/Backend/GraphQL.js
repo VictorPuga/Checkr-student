@@ -1,6 +1,4 @@
-import gql from 'graphql-tag';
-
-export const GET_STUDENT_PROFILES = gql`
+export const GET_STUDENT_PROFILES = `
 query GetStudentProfiles {
   queryStudentsByGroupIdNameIndex{
     items{
@@ -11,7 +9,7 @@ query GetStudentProfiles {
   }
 }`;
 
-export const GET_GROUPS = gql`
+export const GET_GROUPS = `
 query GetGroups($groupId: ID!){
   queryGroupsByUserIdNameIndex(id: $groupId){
     items{
@@ -23,7 +21,7 @@ query GetGroups($groupId: ID!){
   }
 }`
 
-export const LINK_STUDENT_PROFILE_TO_USER = gql`
+export const LINK_STUDENT_PROFILE_TO_USER = `
 mutation LinkStudentProfileToUser($groupId: ID!, $studentId: ID!){
   linkStudentProfileToUser(
     input: {
@@ -36,7 +34,7 @@ mutation LinkStudentProfileToUser($groupId: ID!, $studentId: ID!){
   }
 }`
 
-export const GET_STUDENT = gql`
+export const GET_STUDENT = `
 query GetStudent($studentId: ID!, $groupId: ID!){
   getStudent(id: $studentId, groupId: $groupId){
     grades{

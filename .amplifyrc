@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "heckrstudent-20181003182707-authRole",
+            "UnauthRoleArn": "arn:aws:iam::268013942894:role/heckrstudent-20181003182707-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::268013942894:role/heckrstudent-20181003182707-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "heckrstudent-20181003182707-deployment",
+            "UnauthRoleName": "heckrstudent-20181003182707-unauthRole",
+            "StackName": "heckrstudent-20181003182707",
+            "StackId": "arn:aws:cloudformation:us-west-2:268013942894:stack/heckrstudent-20181003182707/3d1aebd0-c76c-11e8-8755-06142c801c66"
+        }
+    }
+}

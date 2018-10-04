@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, FlatList, SafeAreaView, Alert } from 'react-native';
 import { IconButton, CardCell } from 'src/global/UI';
 import { globalStyles, colors } from 'src/global/styles';
-import { client } from 'checkr-student/App';
+import { API, graphqlOperation } from 'aws-amplify';
 import { GET_STUDENT_PROFILES, GET_GROUPS } from "../Backend/GraphQL";
 
 export default class GroupList extends React.Component {
@@ -26,10 +26,10 @@ export default class GroupList extends React.Component {
         let fetchPolicy = 'network-only';
         try {
             //STPS === Student Profiles :)
-            STPs = await client.query({ query: GET_STUDENT_PROFILES, fetchPolicy });
+            STPs = await API.graphql(graphqlOperation(GET_STUDENT_PROFILES))
             STPsGroupIds = await STPs.data.queryStudentsByGroupIdNameIndex.items.map(stud => stud.groupId);
-            studentProfileIds = await STPs.data.queryStudentsByGroupIdNameIndex.items.map(stud => stud.id);
-            groupsPromises = await STPsGroupIds.map(async groupId => await client.query({ query: GET_GROUPS, variables: { groupId }, fetchPolicy }));
+            studentProfileIds = await STPs.data.queryStudentsByGroupIdNameIndex.items.map(stud => stud.id)
+            groupsPromises = await STPsGroupIds.map(async groupId => await API.graphql(graphqlOperation(GET_GROUPS, { groupId })))
             groupsResponses = await Promise.all(groupsPromises);
             groupsObjects = await groupsResponses.map(groupResponse => groupResponse.data.queryGroupsByUserIdNameIndex.items[0])
             groups = await groupsObjects.map((group, i) => ({ id: group.id, icon: Number(group.icon), color: Number(group.color), name: group.name, studentId: studentProfileIds[i] }));
